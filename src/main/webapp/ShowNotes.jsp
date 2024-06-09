@@ -24,6 +24,8 @@
 
       <br>
 
+      <h1>ALL NOTES : </h1><br>
+
       <%
 
         Session s = FactoryProvider.getFactory().openSession();
@@ -39,11 +41,17 @@
       %>
 
       <div class="card mt-3" >
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
+        <img class="card-img-top m-4" src="img/notebook.png" alt="Card image cap" style="max-width: 90px">
+        <div class="card-body px-5">
           <h5 class="card-title"><%= note.getTitle() %></h5>
           <p class="card-text"><%= note.getContent() %></p>
-          <a href="#" class="btn btn-danger">Delete</a>
+
+          <div class="container text-center mt-2">
+
+            <a href="DeleteNote.jsp?note_id=<%=note.getId()%>" class="btn btn-danger">Delete</a>
+            <a href="#" class="btn btn-primary">Update</a>
+
+          </div>
         </div>
       </div>
 

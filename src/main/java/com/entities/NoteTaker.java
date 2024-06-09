@@ -1,5 +1,6 @@
 package com.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,6 +14,7 @@ public class NoteTaker {
     @Id
     private int id;
     private String title;
+    @Column(length = 2000)
     private String content;
     private Date addedDate;
 

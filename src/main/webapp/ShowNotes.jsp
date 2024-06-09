@@ -49,7 +49,7 @@
           <div class="container text-center mt-2">
 
             <a href="DeleteNote.jsp?note_id=<%=note.getId()%>" class="btn btn-danger">Delete</a>
-            <a href="#" class="btn btn-primary">Update</a>
+            <a href="UpdateNote.jsp?note_id=<%=note.getId()%>" class="btn btn-primary">Update</a>
 
           </div>
         </div>

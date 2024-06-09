@@ -11,7 +11,7 @@
 
     <%
 
-        int note_id = Integer.parseInt(request.getParameter("note_id"));
+        int note_id = Integer.parseInt(request.getParameter("note_id").trim());
 
         try{
 

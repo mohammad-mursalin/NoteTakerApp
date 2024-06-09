@@ -16,7 +16,11 @@ public class NoteTaker {
     private String content;
     private Date addedDate;
 
-    public NoteTaker( String title, String content, Date addedDate) {
+    public NoteTaker() {
+
+    }
+
+    public NoteTaker(String title, String content, Date addedDate) {
         this.id = new Random().nextInt(1000);
         this.title = title;
         this.content = content;

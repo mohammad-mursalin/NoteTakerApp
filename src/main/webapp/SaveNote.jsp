@@ -7,7 +7,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title></title>
     <%@include file="All_js_css.jsp"%>
 </head>
 <body>
@@ -42,7 +42,7 @@
 
     %>
 
-    <h2>Note Added Successfully!</h2>
+    <h2>Note Added Successfully!</h2><br>
     <p>Title:  <%= title %> </p>
     <p>Content:  <%= content %> </p>
 

@@ -1,66 +1,46 @@
 <%@ page import="com.entities.NoteTaker" %>
+<%@ page import="java.util.Date" %>
 <%@ page import="org.hibernate.Session" %>
 <%@ page import="com.helper.FactoryProvider" %>
-<%@ page import="org.hibernate.Transaction" %><%--
-  Created by IntelliJ IDEA.
-  User: mursalin
-  Date: 6/9/24
-  Time: 7:41 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="org.hibernate.Transaction" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
-    <title>Update Note</title>
-  <%@include file="All_js_css.jsp"%>
+    <title></title>
 </head>
 <body>
 
-<%
 
-  int note_id = Integer.parseInt(request.getParameter("note_id").trim());
+    <%
 
-  try{
+        int note_id = Integer.parseInt(request.getParameter("note_id"));
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
 
-    Session s = FactoryProvider.getFactory().openSession();
+        try {
+            Session s = FactoryProvider.getFactory().openSession();
 
-    Transaction tx = s.beginTransaction();
+            Transaction tx = s.beginTransaction();
 
-    NoteTaker note = s.get(NoteTaker.class,note_id);
+            NoteTaker note = s.get(NoteTaker.class,note_id);
 
-    s.delete(note);
+            note.setTitle(title);
+            note.setContent(content);
+            note.setAddedDate(new Date());
 
-    tx.commit();
+            tx.commit();
 
-    s.close();
+            s.close();
 
-    response.sendRedirect("ShowNotes.jsp");
-  }
-  catch (Exception e) {
+            response.sendRedirect("ShowNotes.jsp");
 
-    e.printStackTrace();
-  }
-%>
+        } catch (Exception e) {
 
-<div class="container">
+        e.printStackTrace();
+        }
 
-  <%@ include file="Navbar.jsp"%>
+    %>
 
-  <br>
-  <h1>Please fill your note details</h1>
-
-  <form action = "" method="post" >
-    <div class="form-group">
-      <label for="title">Note Title</label>
-      <input name="title" value="<%=%>" type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter title here" required>
-    </div>
-    <div class="form-group">
-      <label for="content">Note Content</label>
-      <textarea name="content" class="form-control" id="content" placeholder="Enter note content here" required style="height: 300px"></textarea>
-    </div>
-
-    <div class="container text-center"><button type="submit" class="btn btn-primary">Add</button></div>
-  </form>
-</div>
 </body>
 </html>

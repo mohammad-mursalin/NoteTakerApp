@@ -1,6 +1,6 @@
 <%@ page import="org.hibernate.Session" %>
 <%@ page import="com.helper.FactoryProvider" %>
-<%@ page import="org.hibernate.Transaction" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="org.hibernate.query.Query" %>
 <%@ page import="com.entities.NoteTaker" %>
 <%@ page import="java.util.List" %><%--
@@ -45,11 +45,12 @@
         <div class="card-body px-5">
           <h5 class="card-title"><%= note.getTitle() %></h5>
           <p class="card-text"><%= note.getContent() %></p>
+          <p><b><%=new SimpleDateFormat("YYYY.MM.dd HH:mm").format(note.getAddedDate())%></b></p>
 
           <div class="container text-center mt-2">
 
             <a href="DeleteNote.jsp?note_id=<%=note.getId()%>" class="btn btn-danger">Delete</a>
-            <a href="UpdateNote.jsp?note_id=<%=note.getId()%>" class="btn btn-primary">Update</a>
+            <a href="EditNote.jsp?note_id=<%=note.getId()%>" class="btn btn-primary">Update</a>
 
           </div>
         </div>
